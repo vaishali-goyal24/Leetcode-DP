@@ -1,0 +1,24 @@
+class Solution {
+public:
+    int lengthOfLIS(vector<int>& nums) {
+        int n = nums.size();
+        int lis[n];
+       // memset(lis, 0, sizeof(lis));
+        int ans = INT_MIN;
+        for(int i = 0; i < n; i++){
+            lis[i]=0;
+            if(i == 0)
+                lis[i] = 1;
+            else{
+                for(int j = 0; j < i; j++){
+                    if(nums[j] < nums[i])
+                        lis[i] = max(lis[i], lis[j] + 1);
+                    else
+                        lis[i] = max(lis[i], 1);    
+                }
+            }
+            ans = max(ans, lis[i]);
+        }
+        return ans;
+    }
+};
