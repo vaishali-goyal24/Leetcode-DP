@@ -1,0 +1,24 @@
+class Solution {
+public:
+    bool wordBreak(string s, vector<string>& w) 
+    {
+        int n=s.size();
+        bool dp[n+1];
+        dp[0]=true;
+        for(int i=1;i<=n;i++)
+        {
+            dp[i]=false;
+            for(int j=0;j<i;j++)
+            {
+                if(dp[j] && find(w.begin(),w.end(),s.substr(j,i-j))!=w.end())
+                {dp[i]=true;
+                 break;
+                }
+            }
+        }
+        return dp[n];
+    }
+};
+
+
+// time complexity will be n^3 due to substr functiuon used
