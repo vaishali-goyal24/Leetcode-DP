@@ -1,0 +1,27 @@
+problem link: https://www.pepcoding.com/resources/online-java-foundation/dynamic-programming-and-greedy/buy-sell-stocks-transaction-fee-ita-official/ojquestion
+
+
+
+#include<bits/stdc++.h>
+using namespace std;
+int main()
+{
+    int n;
+    cin>>n;
+    int a[n];
+    for(int i=0;i<n;i++)
+    {
+        cin>>a[i];
+    }
+    int f;
+    cin>>f;
+    int s=0;
+    int b=-a[0];
+    for(int i=1;i<n;i++)
+    {
+        int p=b;
+        b=max(b,-a[i]+s);
+        s=max(s,b+a[i]-f);
+    }
+    cout<<s<<endl;
+}
