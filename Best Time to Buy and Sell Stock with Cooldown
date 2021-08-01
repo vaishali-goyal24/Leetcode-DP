@@ -1,0 +1,22 @@
+class Solution {
+public:
+   int maxProfit(vector<int>& a) 
+    {
+        int n=a.size();
+        if(n<=1)
+            return 0;
+        int s=0;
+        int c=0;
+        int b=-a[0];
+        for(int i=1;i<n;i++)
+        {
+            int p=b;
+            int q=s;
+            int r=c;
+            b=max(p,-a[i]+r);
+            s=max(p+a[i],q);
+            c=max(q,r);
+        }
+        return s;
+    }
+};
